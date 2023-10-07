@@ -14,10 +14,6 @@ pipeline {
         
         echo "Calling single line batch command"
         bat "C:\\path\\to\\batFile.bat"
-  }
-    }
-  }
-}
       stage('hello') {
       steps {
         bat 'python hello.py'
