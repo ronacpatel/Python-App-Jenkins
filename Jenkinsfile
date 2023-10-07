@@ -3,8 +3,6 @@ pipeline {
   stages {
     stage('version') {
       steps {
-        bat 'dir'
-        bat 'cd C:\\WINDOWS\\SYSTEM32'
         bat 'python --version'
       }
     }
