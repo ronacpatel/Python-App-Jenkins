@@ -1,16 +1,22 @@
 pipeline {
   agent any
-  stages {
-    stage('version') {
+
+    stage("deploy") {
       steps {
-        bat 'python --version'
-      }
-    stage('build') {
-      cmd_exec('echo "Buils starting..."')
-      cmd_exec('echo "dir /a /b"')
-}
-def cmd_exec(command) {
-    return bat(returnStdout: true, script: "${command}").trim()
+
+        echo "Calling multi line batch command"
+        bat '''
+        call "C:\\path\\to\\batFile.bat"
+        set myVar=exampleVar
+        echo > Sometimes you want to keep environment variables set by the .bat script
+        echo > so multiline script works best in this case: %myVar%
+        '''
+        
+        echo "Calling single line batch command"
+        bat "C:\\path\\to\\batFile.bat"
+  }
+    }
+  }
 }
       stage('hello') {
       steps {
