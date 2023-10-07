@@ -5,12 +5,15 @@ pipeline {
       steps {
         bat 'python --version'
       }
-    }
-    environment {
-
-    PATH = "C:\\WINDOWS\\SYSTEM32"
-
+    stage('build') {
+      cmd_exec('echo "Buils starting..."')
+      cmd_exec('echo "dir /a /b"')
 }
+
+def cmd_exec(command) {
+    return bat(returnStdout: true, script: "${command}").trim()
+}
+    
     stage('hello') {
       steps {
         bat 'python hello.py'
