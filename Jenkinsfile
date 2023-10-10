@@ -4,7 +4,7 @@ pipeline {
     stage('version') {
       steps {
         sh 'ls -al'
-        sh 'python --version'
+        sh 'python3 --version'
       }
     }
     
